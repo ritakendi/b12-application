@@ -36,6 +36,10 @@ def main():
 
 def sign_payload(payload_json):
     secret = os.getenv("B12_SECRET")
+    
+    if not secret:
+        raise ValueError("B12_SECRET environment variable is missing")
+
 
     signature = hmac.new(
         secret.encode("utf-8"),

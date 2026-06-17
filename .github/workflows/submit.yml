@@ -11,6 +11,7 @@ jobs:
       NAME: ${{ vars.NAME }}
       EMAIL: ${{ vars.EMAIL }}
       RESUME_LINK: ${{ vars.RESUME_LINK }}
+      B12_SECRET: ${{ secrets.B12_SECRET }}
 
     steps:
       - name: Checkout Repository
