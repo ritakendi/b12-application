@@ -1,0 +1,25 @@
+name: B12 Submission
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    env:
+      NAME: ${{ vars.NAME }}
+      EMAIL: ${{ vars.EMAIL }}
+      RESUME_LINK: ${{ vars.RESUME_LINK }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run Script
+        run: python submit.py
