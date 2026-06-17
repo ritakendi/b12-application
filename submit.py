@@ -1,6 +1,8 @@
 import os
 from datetime import datetime, timezone
 import json
+import hmac
+import hashlib
 
 
 def build_payload():
@@ -24,8 +26,24 @@ def main():
         sort_keys=True,
         separators=(",", ":")
     )
+    signature = sign_payload(canonical_json)
+
+    print("Payload:")
     print(canonical_json)
 
+    print("\nSignature:")
+    print(signature)
+
+def sign_payload(payload_json):
+    secret = os.getenv("B12_SECRET")
+
+    signature = hmac.new(
+        secret.encode("utf-8"),
+        payload_json.encode("utf-8"),
+        hashlib.sha256,
+    ).hexdigest()
+
+    return signature
 
 if __name__ == "__main__":
     main()
