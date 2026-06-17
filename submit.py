@@ -1,5 +1,6 @@
 import os
 from datetime import datetime, timezone
+import json
 
 
 def build_payload():
@@ -18,7 +19,12 @@ def build_payload():
 
 def main():
     payload = build_payload()
-    print(payload)
+    canonical_json = json.dumps(
+        payload,
+        sort_keys=True,
+        separators=(",", ":")
+    )
+    print(canonical_json)
 
 
 if __name__ == "__main__":
