@@ -1,4 +1,3 @@
-
 # B12 Application
 
 This repository contains my submission for the B12 Full Stack Engineer application.
